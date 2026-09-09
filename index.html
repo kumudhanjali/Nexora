@@ -14,22 +14,28 @@
         content="Nexora — a modern student productivity and learning workspace."
     >
 
-    <meta name="theme-color" content="#7c5cff">
+    <meta
+        name="theme-color"
+        content="#7c5cff"
+    >
 
     <title>Nexora — Learn. Plan. Grow.</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 
 <body>
 
-    <!-- =========================================
-         DAY 47 — HTML TEMPLATES
-         ========================================= -->
+
+    <!-- =====================================================
+         DAY 47 — USER CARD TEMPLATE
+         ===================================================== -->
 
     <template id="user-card-template">
 
         <style>
+
             :host {
                 display: block;
 
@@ -42,9 +48,11 @@
                 --border: #ebe9f1;
             }
 
+
             .card {
                 display: flex;
                 align-items: center;
+
                 gap: 1rem;
 
                 padding: 1rem;
@@ -55,28 +63,37 @@
                 background: var(--surface);
             }
 
+
             .avatar {
                 width: 52px;
                 height: 52px;
 
+                flex-shrink: 0;
+
                 display: grid;
                 place-items: center;
-
-                flex-shrink: 0;
 
                 border-radius: 16px;
 
                 color: white;
-                background: linear-gradient(135deg, #7c5cff, #a37cff);
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        #7c5cff,
+                        #a37cff
+                    );
 
                 font-size: 0.9rem;
                 font-weight: 800;
             }
 
+
             .info {
                 min-width: 0;
                 flex: 1;
             }
+
 
             .name {
                 margin-bottom: 3px;
@@ -87,14 +104,18 @@
                 font-weight: 750;
             }
 
+
             .role {
                 color: var(--muted);
+
                 font-size: 0.65rem;
             }
+
 
             .progress {
                 min-width: 90px;
             }
+
 
             .progress-label {
                 display: flex;
@@ -107,10 +128,13 @@
                 font-size: 0.58rem;
             }
 
+
             .progress-value {
                 color: var(--primary);
+
                 font-weight: 700;
             }
+
 
             .progress-bar {
                 width: 90px;
@@ -123,6 +147,7 @@
                 background: var(--surface-soft);
             }
 
+
             .progress-bar span {
                 display: block;
 
@@ -131,27 +156,42 @@
                 border-radius: inherit;
 
                 background: var(--primary);
+
+                transition: width 250ms ease;
             }
+
         </style>
+
 
         <div class="card">
 
             <div class="avatar"></div>
 
+
             <div class="info">
+
                 <div class="name"></div>
+
                 <div class="role"></div>
+
             </div>
+
 
             <div class="progress">
 
                 <div class="progress-label">
+
                     <span>Progress</span>
+
                     <span class="progress-value"></span>
+
                 </div>
 
+
                 <div class="progress-bar">
+
                     <span></span>
+
                 </div>
 
             </div>
@@ -161,9 +201,15 @@
     </template>
 
 
+
+    <!-- =====================================================
+         DAY 47 — DATA FEED TEMPLATE
+         ===================================================== -->
+
     <template id="data-feed-template">
 
         <style>
+
             :host {
                 display: block;
 
@@ -176,29 +222,36 @@
                 --border: #ebe9f1;
             }
 
+
             .feed {
                 display: flex;
                 flex-direction: column;
             }
+
 
             .feed-list {
                 display: flex;
                 flex-direction: column;
             }
 
+
             .feed-item {
                 display: flex;
                 align-items: center;
+
                 gap: 0.8rem;
 
                 padding: 0.85rem 0;
 
-                border-bottom: 1px solid var(--border);
+                border-bottom:
+                    1px solid var(--border);
             }
+
 
             .feed-item:last-child {
                 border-bottom: none;
             }
+
 
             .feed-icon {
                 width: 36px;
@@ -212,16 +265,19 @@
                 border-radius: 11px;
 
                 color: var(--primary);
+
                 background: var(--primary-soft);
 
                 font-size: 0.58rem;
                 font-weight: 800;
             }
 
+
             .feed-content {
                 min-width: 0;
                 flex: 1;
             }
+
 
             .feed-content strong {
                 display: block;
@@ -236,8 +292,10 @@
                 font-size: 0.7rem;
             }
 
+
             .feed-meta {
                 display: flex;
+
                 gap: 0.35rem;
 
                 margin-top: 4px;
@@ -246,6 +304,7 @@
 
                 font-size: 0.56rem;
             }
+
 
             .feed-action {
                 width: 28px;
@@ -258,50 +317,72 @@
                 border-radius: 9px;
 
                 color: var(--muted);
+
                 background: var(--surface-soft);
 
                 cursor: pointer;
+
+                transition: 180ms ease;
             }
+
 
             .feed-action:hover {
                 color: var(--primary);
-                background: var(--primary-soft);
+
+                background:
+                    var(--primary-soft);
             }
+
         </style>
 
+
         <div class="feed">
+
             <div class="feed-list"></div>
+
         </div>
 
     </template>
 
 
+
+    <!-- =====================================================
+         DAY 47 — CUSTOM MODAL TEMPLATE
+         ===================================================== -->
+
     <template id="custom-modal-template">
 
         <style>
+
             :host {
                 display: contents;
             }
 
+
             .modal-overlay {
                 position: fixed;
+
                 inset: 0;
 
                 z-index: 1000;
 
                 display: grid;
+
                 place-items: center;
 
                 padding: 1.5rem;
 
-                background: rgba(12, 10, 20, 0.58);
+                background:
+                    rgba(12, 10, 20, 0.58);
 
                 backdrop-filter: blur(7px);
             }
 
+
             .modal-overlay[hidden] {
                 display: none;
             }
+
 
             .modal {
                 width: min(100%, 440px);
@@ -316,13 +397,19 @@
 
                 color: #1d1b27;
 
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+                box-shadow:
+                    0 30px 80px
+                    rgba(0, 0, 0, 0.25);
 
-                animation: modal-in 180ms ease;
+                animation:
+                    modal-in
+                    180ms ease;
             }
+
 
             .close-button {
                 position: absolute;
+
                 top: 1rem;
                 right: 1rem;
 
@@ -330,53 +417,80 @@
                 height: 32px;
 
                 display: grid;
+
                 place-items: center;
 
                 border: none;
+
                 border-radius: 10px;
 
                 color: #716d7d;
+
                 background: #f4f3f9;
 
                 cursor: pointer;
             }
 
+
             .close-button:hover {
                 color: #7c5cff;
             }
 
+
             ::slotted([slot="title"]) {
                 display: block;
 
-                margin: 0 2rem 0.65rem 0;
+                margin:
+                    0
+                    2rem
+                    0.65rem
+                    0;
 
                 color: #1d1b27;
 
                 font-size: 1.25rem;
+
                 font-weight: 750;
             }
+
 
             ::slotted(*) {
                 color: #716d7d;
 
                 font-size: 0.82rem;
+
                 line-height: 1.65;
             }
 
+
             @keyframes modal-in {
+
                 from {
                     opacity: 0;
-                    transform: translateY(10px) scale(0.98);
+
+                    transform:
+                        translateY(10px)
+                        scale(0.98);
                 }
+
 
                 to {
                     opacity: 1;
-                    transform: translateY(0) scale(1);
+
+                    transform:
+                        translateY(0)
+                        scale(1);
                 }
+
             }
+
         </style>
 
-        <div class="modal-overlay" hidden>
+
+        <div
+            class="modal-overlay"
+            hidden
+        >
 
             <div
                 class="modal"
@@ -391,9 +505,11 @@
                     ×
                 </button>
 
+
                 <slot name="title">
                     Default Title
                 </slot>
+
 
                 <slot>
                     Default Body
@@ -406,82 +522,182 @@
     </template>
 
 
-    <!-- =========================================
-         APPLICATION SHELL
-         ========================================= -->
+
+    <!-- =====================================================
+         NEXORA APPLICATION SHELL
+         ===================================================== -->
 
     <div class="app-shell">
 
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
         <aside class="sidebar">
+
 
             <div class="brand">
 
-                <div class="brand-mark">N</div>
+                <div class="brand-mark">
+                    N
+                </div>
+
 
                 <div class="brand-text">
-                    <span class="brand-name">Nexora</span>
-                    <span class="brand-tagline">Learn. Plan. Grow.</span>
+
+                    <span class="brand-name">
+                        Nexora
+                    </span>
+
+                    <span class="brand-tagline">
+                        Learn. Plan. Grow.
+                    </span>
+
                 </div>
 
             </div>
 
 
-            <nav class="main-nav">
 
-                <p class="nav-label">Workspace</p>
+            <nav
+                class="main-nav"
+                aria-label="Main navigation"
+            >
 
-                <a href="#" class="nav-item active">
-                    <span class="nav-icon">⌂</span>
+                <p class="nav-label">
+                    Workspace
+                </p>
+
+
+                <a
+                    href="#"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+                        ⌂
+                    </span>
+
                     Dashboard
+
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">✓</span>
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ✓
+                    </span>
+
                     Tasks
+
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">✦</span>
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ✦
+                    </span>
+
                     Discover
+
                 </a>
 
-                <p class="nav-label">Personal</p>
 
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">◌</span>
+                <p class="nav-label">
+                    Personal
+                </p>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ◌
+                    </span>
+
                     Progress
+
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">⚙</span>
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
                     Settings
+
                 </a>
 
             </nav>
 
 
+
             <div class="sidebar-bottom">
 
+
                 <div class="focus-card">
-                    <div class="focus-icon">✦</div>
+
+                    <div class="focus-icon">
+                        ✦
+                    </div>
+
 
                     <div>
-                        <strong>Stay focused</strong>
-                        <p>Small steps create big progress.</p>
+
+                        <strong>
+                            Stay focused
+                        </strong>
+
+                        <p>
+                            Small steps create
+                            big progress.
+                        </p>
+
                     </div>
+
                 </div>
+
 
 
                 <div class="profile-mini">
 
-                    <div class="avatar">A</div>
-
-                    <div class="profile-info">
-                        <strong>Student</strong>
-                        <span>My workspace</span>
+                    <div class="avatar">
+                        A
                     </div>
 
-                    <button class="profile-more">•••</button>
+
+                    <div class="profile-info">
+
+                        <strong>
+                            Student
+                        </strong>
+
+                        <span>
+                            My workspace
+                        </span>
+
+                    </div>
+
+
+                    <button class="profile-more">
+                        •••
+                    </button>
 
                 </div>
 
@@ -490,65 +706,126 @@
         </aside>
 
 
+
+        <!-- =================================================
+             MAIN APPLICATION ROOT
+             ================================================= -->
+
         <main id="app-root">
+
+
+            <!-- =============================================
+                 TOP BAR
+                 ============================================= -->
 
             <header class="topbar">
 
+
                 <div class="mobile-brand">
-                    <div class="brand-mark">N</div>
-                    <span>Nexora</span>
+
+                    <div class="brand-mark">
+                        N
+                    </div>
+
+                    <span>
+                        Nexora
+                    </span>
+
                 </div>
 
+
                 <div class="topbar-actions">
+
 
                     <button
                         id="theme-toggle"
                         class="icon-button"
                         aria-label="Toggle theme"
+                        title="Toggle theme"
                     >
-                        <span id="theme-icon">☾</span>
+
+                        <span id="theme-icon">
+                            ☾
+                        </span>
+
                     </button>
 
-                    <button class="notification-button">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+
                         ♧
-                        <span class="notification-dot"></span>
+
+                        <span
+                            class="notification-dot"
+                        ></span>
+
                     </button>
 
-                    <div class="top-avatar">A</div>
+
+                    <div class="top-avatar">
+                        A
+                    </div>
 
                 </div>
 
             </header>
 
 
+
+            <!-- =============================================
+                 DASHBOARD
+                 ============================================= -->
+
             <section class="dashboard-content">
+
+
+                <!-- Welcome -->
 
                 <div class="welcome-section">
 
+
                     <div>
 
-                        <p class="eyebrow">YOUR WORKSPACE</p>
+                        <p class="eyebrow">
+                            YOUR WORKSPACE
+                        </p>
+
 
                         <h1>
                             Good evening,
                             <span>there.</span>
                         </h1>
 
+
                         <p class="welcome-text">
-                            Organize your day, keep learning, and make
-                            meaningful progress.
+                            Organize your day, keep learning,
+                            and make meaningful progress.
                         </p>
 
                     </div>
 
 
+
                     <div class="date-card">
 
-                        <span class="date-icon">◷</span>
+                        <span class="date-icon">
+                            ◷
+                        </span>
+
 
                         <div>
-                            <span class="date-label">Today</span>
-                            <strong>Stay consistent</strong>
+
+                            <span class="date-label">
+                                Today
+                            </span>
+
+                            <strong>
+                                Stay consistent
+                            </strong>
+
                         </div>
 
                     </div>
@@ -556,57 +833,126 @@
                 </div>
 
 
+
+                <!-- Statistics -->
+
                 <div class="stats-grid">
 
+
                     <article class="stat-card">
 
                         <div class="stat-top">
-                            <span class="stat-icon purple">✓</span>
-                            <span class="stat-trend">+12%</span>
+
+                            <span
+                                class="stat-icon purple"
+                            >
+                                ✓
+                            </span>
+
+                            <span class="stat-trend">
+                                +12%
+                            </span>
+
                         </div>
 
-                        <p>Tasks completed</p>
-                        <h2>18</h2>
+
+                        <p>
+                            Tasks completed
+                        </p>
+
+                        <h2>
+                            18
+                        </h2>
+
 
                         <div class="progress-line">
-                            <span style="width:72%"></span>
+
+                            <span
+                                style="width:72%"
+                            ></span>
+
                         </div>
 
-                        <small>72% of your weekly goal</small>
+
+                        <small>
+                            72% of your weekly goal
+                        </small>
 
                     </article>
 
 
+
                     <article class="stat-card">
 
                         <div class="stat-top">
-                            <span class="stat-icon blue">◷</span>
-                            <span class="stat-trend">+2.4h</span>
+
+                            <span
+                                class="stat-icon blue"
+                            >
+                                ◷
+                            </span>
+
+                            <span class="stat-trend">
+                                +2.4h
+                            </span>
+
                         </div>
 
-                        <p>Focus time</p>
-                        <h2>14.5h</h2>
+
+                        <p>
+                            Focus time
+                        </p>
+
+                        <h2>
+                            14.5h
+                        </h2>
+
 
                         <div class="progress-line">
-                            <span style="width:61%"></span>
+
+                            <span
+                                style="width:61%"
+                            ></span>
+
                         </div>
 
-                        <small>61% of your weekly target</small>
+
+                        <small>
+                            61% of your weekly target
+                        </small>
 
                     </article>
 
 
+
                     <article class="stat-card">
 
                         <div class="stat-top">
-                            <span class="stat-icon gold">✦</span>
-                            <span class="stat-trend">Active</span>
+
+                            <span
+                                class="stat-icon gold"
+                            >
+                                ✦
+                            </span>
+
+                            <span class="stat-trend">
+                                Active
+                            </span>
+
                         </div>
 
-                        <p>Learning streak</p>
-                        <h2>7 days</h2>
+
+                        <p>
+                            Learning streak
+                        </p>
+
+                        <h2>
+                            7 days
+                        </h2>
+
 
                         <div class="streak-dots">
+
                             <span class="filled"></span>
                             <span class="filled"></span>
                             <span class="filled"></span>
@@ -614,59 +960,107 @@
                             <span class="filled"></span>
                             <span class="filled"></span>
                             <span class="filled"></span>
+
                         </div>
 
-                        <small>Keep your momentum going</small>
+
+                        <small>
+                            Keep your momentum going
+                        </small>
 
                     </article>
 
                 </div>
 
 
+
+                <!-- Main Grid -->
+
                 <div class="dashboard-grid">
+
 
                     <section class="panel focus-panel">
 
+
                         <div class="panel-header">
 
+
                             <div>
-                                <p class="eyebrow">TODAY</p>
-                                <h2>Today's focus</h2>
+
+                                <p class="eyebrow">
+                                    TODAY
+                                </p>
+
+                                <h2>
+                                    Today's focus
+                                </h2>
+
                             </div>
 
-                            <button class="text-button">
-                                View all →
+
+                            <!-- DAY 48 -->
+                            <button
+                                id="increase-progress"
+                                class="text-button"
+                            >
+                                Update progress →
                             </button>
 
                         </div>
 
 
+
                         <div class="task-list">
+
 
                             <div class="task-item">
 
-                                <div class="task-check">✓</div>
-
-                                <div class="task-content">
-                                    <strong>Review JavaScript concepts</strong>
-                                    <span>Learning · 45 min</span>
+                                <div class="task-check">
+                                    ✓
                                 </div>
 
-                                <span class="task-status completed">
+
+                                <div class="task-content">
+
+                                    <strong>
+                                        Review JavaScript concepts
+                                    </strong>
+
+                                    <span>
+                                        Learning · 45 min
+                                    </span>
+
+                                </div>
+
+
+                                <span
+                                    class="task-status completed"
+                                >
                                     Done
                                 </span>
 
                             </div>
 
 
+
                             <div class="task-item">
 
-                                <div class="task-check empty"></div>
+                                <div class="task-check empty">
+                                </div>
+
 
                                 <div class="task-content">
-                                    <strong>Complete project documentation</strong>
-                                    <span>Project · 60 min</span>
+
+                                    <strong>
+                                        Complete project documentation
+                                    </strong>
+
+                                    <span>
+                                        Project · 60 min
+                                    </span>
+
                                 </div>
+
 
                                 <span class="task-status">
                                     Next
@@ -675,14 +1069,25 @@
                             </div>
 
 
+
                             <div class="task-item">
 
-                                <div class="task-check empty"></div>
+                                <div class="task-check empty">
+                                </div>
+
 
                                 <div class="task-content">
-                                    <strong>Practice problem solving</strong>
-                                    <span>Practice · 30 min</span>
+
+                                    <strong>
+                                        Practice problem solving
+                                    </strong>
+
+                                    <span>
+                                        Practice · 30 min
+                                    </span>
+
                                 </div>
+
 
                                 <span class="task-status">
                                     Later
@@ -695,16 +1100,31 @@
                     </section>
 
 
+
+                    <!-- Weekly Progress -->
+
                     <section class="panel progress-panel">
+
 
                         <div class="panel-header">
 
+
                             <div>
-                                <p class="eyebrow">OVERVIEW</p>
-                                <h2>Weekly progress</h2>
+
+                                <p class="eyebrow">
+                                    OVERVIEW
+                                </p>
+
+                                <h2>
+                                    Weekly progress
+                                </h2>
+
                             </div>
 
-                            <span class="percentage">68%</span>
+
+                            <span class="percentage">
+                                68%
+                            </span>
 
                         </div>
 
@@ -712,8 +1132,15 @@
                         <div class="progress-ring">
 
                             <div class="ring-inner">
-                                <strong>68%</strong>
-                                <span>completed</span>
+
+                                <strong>
+                                    68%
+                                </strong>
+
+                                <span>
+                                    completed
+                                </span>
+
                             </div>
 
                         </div>
@@ -721,16 +1148,38 @@
 
                         <div class="legend">
 
-                            <div>
-                                <span class="legend-dot purple"></span>
-                                <span>Completed</span>
-                                <strong>34</strong>
-                            </div>
 
                             <div>
-                                <span class="legend-dot muted"></span>
-                                <span>Remaining</span>
-                                <strong>16</strong>
+
+                                <span
+                                    class="legend-dot purple"
+                                ></span>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                                <strong>
+                                    34
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span
+                                    class="legend-dot muted"
+                                ></span>
+
+                                <span>
+                                    Remaining
+                                </span>
+
+                                <strong>
+                                    16
+                                </strong>
+
                             </div>
 
                         </div>
@@ -740,26 +1189,35 @@
                 </div>
 
 
+
                 <!-- =========================================
                      DAY 47 — COMPONENT LIBRARY
                      ========================================= -->
 
                 <section class="component-showcase">
 
+
                     <div class="showcase-heading">
+
 
                         <div>
 
-                            <p class="eyebrow">COMPONENT LIBRARY</p>
+                            <p class="eyebrow">
+                                COMPONENT LIBRARY
+                            </p>
 
-                            <h2>Built to be reusable.</h2>
+                            <h2>
+                                Built to be reusable.
+                            </h2>
 
                             <p>
-                                Native Web Components with Shadow DOM,
-                                reusable templates, and encapsulated styles.
+                                Native Web Components with
+                                Shadow DOM, reusable templates,
+                                and encapsulated styles.
                             </p>
 
                         </div>
+
 
                         <button
                             id="open-modal"
@@ -771,19 +1229,31 @@
                     </div>
 
 
+
                     <div class="component-grid">
+
+
+                        <!-- USER CARD -->
 
                         <div class="component-card">
 
-                            <div class="component-card-heading">
 
-                                <span class="component-badge">
+                            <div
+                                class="component-card-heading"
+                            >
+
+                                <span
+                                    class="component-badge"
+                                >
                                     &lt;user-card&gt;
                                 </span>
 
-                                <span>Shadow DOM</span>
+                                <span>
+                                    Shadow DOM
+                                </span>
 
                             </div>
+
 
                             <user-card
                                 name="Nexora Student"
@@ -795,17 +1265,28 @@
                         </div>
 
 
+
+                        <!-- DATA FEED -->
+
                         <div class="component-card">
 
-                            <div class="component-card-heading">
 
-                                <span class="component-badge">
+                            <div
+                                class="component-card-heading"
+                            >
+
+                                <span
+                                    class="component-badge"
+                                >
                                     &lt;data-feed&gt;
                                 </span>
 
-                                <span>Template API</span>
+                                <span>
+                                    Template API
+                                </span>
 
                             </div>
+
 
                             <data-feed></data-feed>
 
@@ -816,38 +1297,62 @@
                 </section>
 
 
-                <custom-modal id="welcome-modal">
+
+                <!-- CUSTOM MODAL -->
+
+                <custom-modal
+                    id="welcome-modal"
+                >
 
                     <h2 slot="title">
                         Welcome to Nexora ✦
                     </h2>
 
+
                     <p>
-                        This reusable modal is built using a native
-                        Web Component, Shadow DOM, HTML templates, and slots.
+                        This reusable modal is built using
+                        a native Web Component, Shadow DOM,
+                        HTML templates, and slots.
                     </p>
 
                 </custom-modal>
 
 
-                <section class="panel inspiration-panel">
 
-                    <div class="inspiration-icon">✦</div>
+                <!-- =========================================
+                     INSPIRATION
+                     ========================================= -->
+
+                <section
+                    class="panel inspiration-panel"
+                >
+
+
+                    <div class="inspiration-icon">
+                        ✦
+                    </div>
+
 
                     <div class="inspiration-content">
 
-                        <p class="eyebrow">A LITTLE REMINDER</p>
+                        <p class="eyebrow">
+                            A LITTLE REMINDER
+                        </p>
+
 
                         <h2>
                             Progress doesn't have to be perfect.
                         </h2>
 
+
                         <p>
-                            Focus on showing up, learning something new,
-                            and taking one meaningful step forward today.
+                            Focus on showing up, learning
+                            something new, and taking one
+                            meaningful step forward today.
                         </p>
 
                     </div>
+
 
                     <button class="primary-button">
                         Start focusing →
@@ -862,11 +1367,35 @@
     </div>
 
 
-    <script src="main.js"></script>
 
-    <script type="module" src="./components/user-card.js"></script>
-    <script type="module" src="./components/data-feed.js"></script>
-    <script type="module" src="./components/custom-modal.js"></script>
+    <!-- =====================================================
+         JAVASCRIPT MODULES
+         ===================================================== -->
+
+    <script
+        type="module"
+        src="./main.js"
+    ></script>
+
+
+    <script
+        type="module"
+        src="./components/user-card.js"
+    ></script>
+
+
+    <script
+        type="module"
+        src="./components/data-feed.js"
+    ></script>
+
+
+    <script
+        type="module"
+        src="./components/custom-modal.js"
+    ></script>
+
 
 </body>
+
 </html>
