@@ -20,7 +20,9 @@
         content="#7c5cff"
     >
 
-    <title>Nexora — Learn. Plan. Grow.</title>
+    <title>
+        Nexora — Learn. Plan. Grow.
+    </title>
 
     <link
         rel="stylesheet"
@@ -31,6 +33,7 @@
 
 
 <body>
+
 
     <!-- =================================
          USER CARD TEMPLATE
@@ -54,12 +57,16 @@
                 width: 56px;
                 height: 56px;
                 border-radius: 16px;
+
                 display: grid;
                 place-items: center;
+
                 background: #7c5cff;
                 color: white;
+
                 font-weight: 700;
                 font-size: 17px;
+
                 flex-shrink: 0;
             }
 
@@ -70,14 +77,18 @@
 
             .name {
                 margin: 0 0 4px;
+
                 font-size: 16px;
                 font-weight: 700;
+
                 color: #17151f;
             }
 
             .role {
                 display: block;
+
                 margin-bottom: 12px;
+
                 font-size: 13px;
                 color: #77727f;
             }
@@ -90,26 +101,54 @@
 
             .progress-bar {
                 flex: 1;
+
                 height: 7px;
+
                 border-radius: 20px;
+
                 background: #eceaf2;
+
                 overflow: hidden;
             }
 
             .progress-bar span {
                 display: block;
+
                 width: 0;
                 height: 100%;
+
                 border-radius: inherit;
+
                 background: #7c5cff;
-                transition: width 0.35s ease;
+
+                transition:
+                    width 0.35s ease;
             }
 
             .progress-value {
+                min-width: 35px;
+
                 font-size: 12px;
                 font-weight: 700;
+
                 color: #7c5cff;
-                min-width: 35px;
+            }
+
+
+            @media (prefers-color-scheme: dark) {
+
+                .name {
+                    color: #f5f3f8;
+                }
+
+                .role {
+                    color: #aaa5b3;
+                }
+
+                .progress-bar {
+                    background: #302d38;
+                }
+
             }
 
         </style>
@@ -144,6 +183,7 @@
     </template>
 
 
+
     <!-- =================================
          DATA FEED TEMPLATE
     ================================== -->
@@ -165,21 +205,29 @@
                 display: flex;
                 align-items: center;
                 gap: 13px;
+
                 padding: 12px;
+
                 border-radius: 14px;
+
                 background: #f8f7fb;
             }
 
             .feed-icon {
                 width: 40px;
                 height: 40px;
+
                 border-radius: 11px;
+
                 display: grid;
                 place-items: center;
+
                 background: #ebe7ff;
                 color: #6d4ff5;
+
                 font-size: 11px;
                 font-weight: 800;
+
                 flex-shrink: 0;
             }
 
@@ -190,8 +238,11 @@
 
             .feed-content strong {
                 display: block;
+
                 margin-bottom: 5px;
+
                 color: #24212c;
+
                 font-size: 13px;
                 text-transform: capitalize;
             }
@@ -199,16 +250,38 @@
             .feed-meta {
                 display: flex;
                 gap: 7px;
+
                 color: #888391;
+
                 font-size: 11px;
             }
 
             .feed-action {
                 border: 0;
                 background: transparent;
+
                 color: #7c5cff;
+
                 font-size: 18px;
+
                 cursor: pointer;
+            }
+
+
+            @media (prefers-color-scheme: dark) {
+
+                .feed-item {
+                    background: #211f28;
+                }
+
+                .feed-content strong {
+                    color: #f5f3f8;
+                }
+
+                .feed-meta {
+                    color: #aaa5b3;
+                }
+
             }
 
         </style>
@@ -217,6 +290,7 @@
         <div class="feed-list"></div>
 
     </template>
+
 
 
     <!-- =================================
@@ -230,49 +304,96 @@
             .modal-overlay {
                 position: fixed;
                 inset: 0;
+
                 z-index: 999;
+
                 display: grid;
                 place-items: center;
+
                 padding: 20px;
-                background: rgba(20, 18, 28, 0.55);
-                backdrop-filter: blur(7px);
+
+                background:
+                    rgba(
+                        20,
+                        18,
+                        28,
+                        0.55
+                    );
+
+                backdrop-filter:
+                    blur(7px);
             }
 
-            .modal {
-                width: min(460px, 100%);
-                background: white;
-                border-radius: 24px;
-                padding: 28px;
-                box-shadow:
-                    0 25px 70px rgba(0, 0, 0, 0.25);
-                position: relative;
-            }
 
-            .close-button {
-                position: absolute;
-                right: 16px;
-                top: 16px;
-                width: 34px;
-                height: 34px;
-                border: 0;
-                border-radius: 10px;
-                background: #f1eff5;
-                cursor: pointer;
-                font-size: 17px;
-            }
+            /* Important Day 49/50 fix */
 
             .modal-overlay[hidden] {
                 display: none;
             }
 
-            ::slotted([slot="title"]) {
+
+            .modal {
+                width:
+                    min(
+                        460px,
+                        100%
+                    );
+
+                background: white;
+
+                border-radius: 24px;
+
+                padding: 28px;
+
+                box-shadow:
+                    0 25px 70px
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        0.25
+                    );
+
+                position: relative;
+            }
+
+
+            .close-button {
+                position: absolute;
+
+                right: 16px;
+                top: 16px;
+
+                width: 34px;
+                height: 34px;
+
+                border: 0;
+                border-radius: 10px;
+
+                background: #f1eff5;
+
+                cursor: pointer;
+
+                font-size: 17px;
+            }
+
+
+            ::slotted(
+                [slot="title"]
+            ) {
+
                 margin: 0 0 10px;
+
                 font-size: 23px;
+
                 color: #191722;
             }
 
+
             ::slotted(p) {
+
                 color: #716d79;
+
                 line-height: 1.7;
             }
 
@@ -293,9 +414,11 @@
                     ×
                 </button>
 
+
                 <slot name="title">
                     Default Title
                 </slot>
+
 
                 <slot>
                     Default Body
@@ -320,6 +443,7 @@
 
         <aside class="sidebar">
 
+
             <div class="brand">
 
                 <div class="brand-mark">
@@ -327,11 +451,19 @@
                 </div>
 
                 <div>
-                    <strong>Nexora</strong>
-                    <span>Learn. Plan. Grow.</span>
+
+                    <strong>
+                        Nexora
+                    </strong>
+
+                    <span>
+                        Learn. Plan. Grow.
+                    </span>
+
                 </div>
 
             </div>
+
 
 
             <nav class="navigation">
@@ -339,6 +471,7 @@
                 <span class="nav-label">
                     WORKSPACE
                 </span>
+
 
                 <a
                     href="/"
@@ -349,6 +482,7 @@
                     Dashboard
                 </a>
 
+
                 <a
                     href="/tasks"
                     data-route
@@ -358,6 +492,7 @@
                     Tasks
                 </a>
 
+
                 <a
                     href="/learning"
                     data-route
@@ -366,6 +501,7 @@
                     <span>▣</span>
                     Learning
                 </a>
+
 
                 <a
                     href="/analytics"
@@ -379,22 +515,29 @@
             </nav>
 
 
+
             <div class="sidebar-bottom">
+
 
                 <div class="challenge-card">
 
-                    <span>PHASE 5</span>
+                    <span>
+                        PHASE 5
+                    </span>
 
                     <strong>
                         Capstone Project
                     </strong>
 
                     <small>
-                        Day 49 of 50
+                        Day 50 of 50
                     </small>
 
+
                     <div class="mini-progress">
+
                         <span></span>
+
                     </div>
 
                 </div>
@@ -404,8 +547,13 @@
                     id="theme-toggle"
                     class="theme-toggle"
                 >
-                    <span id="theme-icon">☾</span>
+
+                    <span id="theme-icon">
+                        ☾
+                    </span>
+
                     Toggle Theme
+
                 </button>
 
             </div>
@@ -414,31 +562,52 @@
 
 
 
-        <!-- MAIN AREA -->
+        <!-- MAIN -->
 
         <main class="main-area">
 
 
             <header class="topbar">
 
+
                 <div class="mobile-brand">
+
                     <div class="brand-mark">
                         N
                     </div>
 
-                    <strong>Nexora</strong>
+                    <strong>
+                        Nexora
+                    </strong>
+
                 </div>
 
 
+
                 <div class="topbar-actions">
+
+
+                    <div
+                        id="connection-status"
+                        class="connection-status"
+                    >
+                        Online
+                    </div>
+
 
                     <button
                         id="open-modal"
                         class="topbar-button"
                     >
+
                         ✦
-                        <span>What's new</span>
+
+                        <span>
+                            What's new
+                        </span>
+
                     </button>
+
 
                     <div class="top-avatar">
                         NS
@@ -447,6 +616,7 @@
                 </div>
 
             </header>
+
 
 
             <div id="app-root">
@@ -485,6 +655,7 @@
             Welcome to Nexora ✨
         </h2>
 
+
         <p>
             Nexora is your personal learning
             and productivity workspace.
@@ -496,12 +667,15 @@
 
 
 
-    <!-- APPLICATION SCRIPT -->
+    <!-- =================================
+         APPLICATION SCRIPT
+    ================================== -->
 
     <script
         type="module"
         src="./main.js"
     ></script>
+
 
 </body>
 

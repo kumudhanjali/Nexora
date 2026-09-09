@@ -9,105 +9,152 @@ import {
     renderAnalytics
 } from "./views/views.js";
 
+
 import "./components/user-card.js";
 import "./components/data-feed.js";
 import "./components/custom-modal.js";
 
 
-const root = document.getElementById("app-root");
+/* =================================
+   APP ROOT
+================================= */
+
+const root =
+    document.getElementById("app-root");
+
+
+/* =================================
+   ROUTER
+================================= */
 
 const routes = {
-    "/": () => renderDashboard(root),
-    "/tasks": () => renderTasks(root),
-    "/learning": () => renderLearning(root),
-    "/analytics": () => renderAnalytics(root)
+
+    "/": () =>
+        renderDashboard(root),
+
+    "/tasks": () =>
+        renderTasks(root),
+
+    "/learning": () =>
+        renderLearning(root),
+
+    "/analytics": () =>
+        renderAnalytics(root)
+
 };
 
 
-const router = new Router(routes, root);
+const router =
+    new Router(routes, root);
+
 
 router.init();
 
 
-/* ================================
-   THEME MANAGEMENT
-================================ */
+/* =================================
+   THEME
+================================= */
 
 const themeToggle =
-    document.getElementById("theme-toggle");
+    document.getElementById(
+        "theme-toggle"
+    );
+
 
 const themeIcon =
-    document.getElementById("theme-icon");
+    document.getElementById(
+        "theme-icon"
+    );
+
 
 const savedTheme =
     globalStore.getState().theme;
 
+
 if (savedTheme === "dark") {
+
     document.documentElement.setAttribute(
         "data-theme",
         "dark"
     );
 
     themeIcon.textContent = "☀";
+
 }
 
 
-themeToggle.addEventListener("click", async () => {
+themeToggle.addEventListener(
+    "click",
+    async () => {
 
-    const isDark =
-        document.documentElement.getAttribute(
-            "data-theme"
-        ) === "dark";
-
-    const newTheme =
-        isDark ? "light" : "dark";
-
-
-    if (newTheme === "dark") {
-
-        document.documentElement.setAttribute(
-            "data-theme",
-            "dark"
-        );
-
-        themeIcon.textContent = "☀";
-
-    } else {
-
-        document.documentElement.removeAttribute(
-            "data-theme"
-        );
-
-        themeIcon.textContent = "☾";
-    }
+        const isDark =
+            document.documentElement
+                .getAttribute("data-theme")
+            === "dark";
 
 
-    globalStore.setState({
-        theme: newTheme
-    });
+        const newTheme =
+            isDark
+                ? "light"
+                : "dark";
 
-    localStorage.setItem(
-        "nexora-theme",
-        newTheme
-    );
 
-    try {
-        await saveData(
-            "theme",
+        if (newTheme === "dark") {
+
+            document.documentElement
+                .setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+            themeIcon.textContent = "☀";
+
+        } else {
+
+            document.documentElement
+                .removeAttribute(
+                    "data-theme"
+                );
+
+            themeIcon.textContent = "☾";
+
+        }
+
+
+        globalStore.setState({
+            theme: newTheme
+        });
+
+
+        localStorage.setItem(
+            "nexora-theme",
             newTheme
         );
-    } catch (error) {
-        console.error(
-            "Theme storage error:",
-            error
-        );
+
+
+        try {
+
+            await saveData(
+                "theme",
+                newTheme
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Theme storage error:",
+                error
+            );
+
+        }
+
     }
-});
+);
 
 
-/* ================================
-   PROGRESS MANAGEMENT
-================================ */
+/* =================================
+   PROGRESS
+================================= */
 
 const progressButton =
     document.getElementById(
@@ -122,7 +169,10 @@ if (progressButton) {
         async () => {
 
             const currentProgress =
-                globalStore.getState().progress;
+                globalStore
+                    .getState()
+                    .progress;
+
 
             const nextProgress =
                 Math.min(
@@ -130,35 +180,44 @@ if (progressButton) {
                     100
                 );
 
+
             globalStore.setState({
-                progress: nextProgress
+                progress:
+                    nextProgress
             });
 
+
             try {
+
                 await saveData(
                     "progress",
                     nextProgress
                 );
+
             } catch (error) {
+
                 console.error(
                     "Progress storage error:",
                     error
                 );
+
             }
 
         }
     );
+
 }
 
 
-/* ================================
+/* =================================
    MODAL
-================================ */
+================================= */
 
 const openModalButton =
     document.getElementById(
         "open-modal"
     );
+
 
 const welcomeModal =
     document.getElementById(
@@ -166,12 +225,110 @@ const welcomeModal =
     );
 
 
-if (openModalButton && welcomeModal) {
+if (
+    openModalButton &&
+    welcomeModal
+) {
 
     openModalButton.addEventListener(
         "click",
         () => {
+
             welcomeModal.open();
+
         }
     );
+
+}
+
+
+/* =================================
+   ONLINE / OFFLINE STATUS
+================================= */
+
+function updateConnectionStatus() {
+
+    const banner =
+        document.getElementById(
+            "connection-status"
+        );
+
+
+    if (!banner) {
+        return;
+    }
+
+
+    if (navigator.onLine) {
+
+        banner.textContent =
+            "Online";
+
+        banner.classList.remove(
+            "offline"
+        );
+
+    } else {
+
+        banner.textContent =
+            "Offline mode";
+
+        banner.classList.add(
+            "offline"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "online",
+    updateConnectionStatus
+);
+
+
+window.addEventListener(
+    "offline",
+    updateConnectionStatus
+);
+
+
+updateConnectionStatus();
+
+
+/* =================================
+   SERVICE WORKER
+================================= */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener(
+        "load",
+        async () => {
+
+            try {
+
+                const registration =
+                    await navigator.serviceWorker
+                        .register("./sw.js");
+
+
+                console.log(
+                    "Nexora Service Worker registered:",
+                    registration.scope
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Service Worker registration failed:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
 }
