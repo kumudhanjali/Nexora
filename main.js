@@ -1,6 +1,5 @@
 /* =========================================
-   NEXORA — DAY 46
-   Core UI Shell
+   NEXORA — DAY 46 + DAY 47
    ========================================= */
 
 const themeToggle = document.getElementById("theme-toggle");
@@ -15,23 +14,24 @@ if (savedTheme === "dark") {
 
 
 /* =========================================
-   Theme Toggle
+   DAY 46 — THEME TOGGLE
    ========================================= */
 
 themeToggle.addEventListener("click", () => {
 
-    const currentTheme =
-        document.documentElement.getAttribute("data-theme");
-
-    const isDark = currentTheme === "dark";
+    const isDark =
+        document.documentElement.getAttribute("data-theme") === "dark";
 
     if (isDark) {
+
         document.documentElement.removeAttribute("data-theme");
 
         themeIcon.textContent = "☾";
 
         localStorage.setItem("nexora-theme", "light");
+
     } else {
+
         document.documentElement.setAttribute(
             "data-theme",
             "dark"
@@ -41,4 +41,19 @@ themeToggle.addEventListener("click", () => {
 
         localStorage.setItem("nexora-theme", "dark");
     }
+});
+
+
+/* =========================================
+   DAY 47 — CUSTOM MODAL
+   ========================================= */
+
+const openModalButton =
+    document.getElementById("open-modal");
+
+const welcomeModal =
+    document.getElementById("welcome-modal");
+
+openModalButton.addEventListener("click", () => {
+    welcomeModal.open();
 });

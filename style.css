@@ -1218,3 +1218,105 @@ a {
         transition-duration: 0.01ms !important;
     }
 }
+/* =========================================
+   DAY 47 — COMPONENT LIBRARY
+   ========================================= */
+
+.component-showcase {
+    margin-bottom: 1rem;
+}
+
+.showcase-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+}
+
+.showcase-heading h2 {
+    margin-bottom: 0.4rem;
+
+    font-size: 1.05rem;
+    letter-spacing: -0.025em;
+}
+
+.showcase-heading p:last-child {
+    max-width: 620px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.68rem;
+    line-height: 1.55;
+}
+
+.component-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 1rem;
+}
+
+.component-card {
+    min-width: 0;
+
+    padding: 1.35rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.component-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+.component-badge {
+    padding: 0.3rem 0.55rem;
+
+    border-radius: 7px;
+
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+
+    font-family: monospace;
+    font-size: 0.6rem;
+}
+
+@media (max-width: 780px) {
+
+    .showcase-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .showcase-heading .primary-button {
+        width: 100%;
+    }
+
+    .component-grid {
+        grid-template-columns: 1fr;
+    }
+}

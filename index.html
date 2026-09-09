@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -15,60 +16,449 @@
 
     <meta name="theme-color" content="#7c5cff">
 
-    <title>Nexora — Your Space to Grow</title>
+    <title>Nexora — Learn. Plan. Grow.</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Application Shell -->
+    <!-- =========================================
+         DAY 47 — HTML TEMPLATES
+         ========================================= -->
+
+    <template id="user-card-template">
+
+        <style>
+            :host {
+                display: block;
+
+                --primary: #7c5cff;
+                --primary-soft: rgba(124, 92, 255, 0.12);
+                --surface: #ffffff;
+                --surface-soft: #f4f3f9;
+                --text: #1d1b27;
+                --muted: #716d7d;
+                --border: #ebe9f1;
+            }
+
+            .card {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                padding: 1rem;
+
+                border: 1px solid var(--border);
+                border-radius: 18px;
+
+                background: var(--surface);
+            }
+
+            .avatar {
+                width: 52px;
+                height: 52px;
+
+                display: grid;
+                place-items: center;
+
+                flex-shrink: 0;
+
+                border-radius: 16px;
+
+                color: white;
+                background: linear-gradient(135deg, #7c5cff, #a37cff);
+
+                font-size: 0.9rem;
+                font-weight: 800;
+            }
+
+            .info {
+                min-width: 0;
+                flex: 1;
+            }
+
+            .name {
+                margin-bottom: 3px;
+
+                color: var(--text);
+
+                font-size: 0.85rem;
+                font-weight: 750;
+            }
+
+            .role {
+                color: var(--muted);
+                font-size: 0.65rem;
+            }
+
+            .progress {
+                min-width: 90px;
+            }
+
+            .progress-label {
+                display: flex;
+                justify-content: space-between;
+
+                margin-bottom: 5px;
+
+                color: var(--muted);
+
+                font-size: 0.58rem;
+            }
+
+            .progress-value {
+                color: var(--primary);
+                font-weight: 700;
+            }
+
+            .progress-bar {
+                width: 90px;
+                height: 5px;
+
+                overflow: hidden;
+
+                border-radius: 99px;
+
+                background: var(--surface-soft);
+            }
+
+            .progress-bar span {
+                display: block;
+
+                height: 100%;
+
+                border-radius: inherit;
+
+                background: var(--primary);
+            }
+        </style>
+
+        <div class="card">
+
+            <div class="avatar"></div>
+
+            <div class="info">
+                <div class="name"></div>
+                <div class="role"></div>
+            </div>
+
+            <div class="progress">
+
+                <div class="progress-label">
+                    <span>Progress</span>
+                    <span class="progress-value"></span>
+                </div>
+
+                <div class="progress-bar">
+                    <span></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </template>
+
+
+    <template id="data-feed-template">
+
+        <style>
+            :host {
+                display: block;
+
+                --primary: #7c5cff;
+                --primary-soft: rgba(124, 92, 255, 0.12);
+                --surface: #ffffff;
+                --surface-soft: #f4f3f9;
+                --text: #1d1b27;
+                --muted: #716d7d;
+                --border: #ebe9f1;
+            }
+
+            .feed {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .feed-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .feed-item {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+
+                padding: 0.85rem 0;
+
+                border-bottom: 1px solid var(--border);
+            }
+
+            .feed-item:last-child {
+                border-bottom: none;
+            }
+
+            .feed-icon {
+                width: 36px;
+                height: 36px;
+
+                flex-shrink: 0;
+
+                display: grid;
+                place-items: center;
+
+                border-radius: 11px;
+
+                color: var(--primary);
+                background: var(--primary-soft);
+
+                font-size: 0.58rem;
+                font-weight: 800;
+            }
+
+            .feed-content {
+                min-width: 0;
+                flex: 1;
+            }
+
+            .feed-content strong {
+                display: block;
+
+                overflow: hidden;
+
+                color: var(--text);
+
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                font-size: 0.7rem;
+            }
+
+            .feed-meta {
+                display: flex;
+                gap: 0.35rem;
+
+                margin-top: 4px;
+
+                color: var(--muted);
+
+                font-size: 0.56rem;
+            }
+
+            .feed-action {
+                width: 28px;
+                height: 28px;
+
+                display: grid;
+                place-items: center;
+
+                border: none;
+                border-radius: 9px;
+
+                color: var(--muted);
+                background: var(--surface-soft);
+
+                cursor: pointer;
+            }
+
+            .feed-action:hover {
+                color: var(--primary);
+                background: var(--primary-soft);
+            }
+        </style>
+
+        <div class="feed">
+            <div class="feed-list"></div>
+        </div>
+
+    </template>
+
+
+    <template id="custom-modal-template">
+
+        <style>
+            :host {
+                display: contents;
+            }
+
+            .modal-overlay {
+                position: fixed;
+                inset: 0;
+
+                z-index: 1000;
+
+                display: grid;
+                place-items: center;
+
+                padding: 1.5rem;
+
+                background: rgba(12, 10, 20, 0.58);
+
+                backdrop-filter: blur(7px);
+            }
+
+            .modal-overlay[hidden] {
+                display: none;
+            }
+
+            .modal {
+                width: min(100%, 440px);
+
+                position: relative;
+
+                padding: 1.75rem;
+
+                border-radius: 24px;
+
+                background: #ffffff;
+
+                color: #1d1b27;
+
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+
+                animation: modal-in 180ms ease;
+            }
+
+            .close-button {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+
+                width: 32px;
+                height: 32px;
+
+                display: grid;
+                place-items: center;
+
+                border: none;
+                border-radius: 10px;
+
+                color: #716d7d;
+                background: #f4f3f9;
+
+                cursor: pointer;
+            }
+
+            .close-button:hover {
+                color: #7c5cff;
+            }
+
+            ::slotted([slot="title"]) {
+                display: block;
+
+                margin: 0 2rem 0.65rem 0;
+
+                color: #1d1b27;
+
+                font-size: 1.25rem;
+                font-weight: 750;
+            }
+
+            ::slotted(*) {
+                color: #716d7d;
+
+                font-size: 0.82rem;
+                line-height: 1.65;
+            }
+
+            @keyframes modal-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px) scale(0.98);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+        </style>
+
+        <div class="modal-overlay" hidden>
+
+            <div
+                class="modal"
+                role="dialog"
+                aria-modal="true"
+            >
+
+                <button
+                    class="close-button"
+                    aria-label="Close modal"
+                >
+                    ×
+                </button>
+
+                <slot name="title">
+                    Default Title
+                </slot>
+
+                <slot>
+                    Default Body
+                </slot>
+
+            </div>
+
+        </div>
+
+    </template>
+
+
+    <!-- =========================================
+         APPLICATION SHELL
+         ========================================= -->
+
     <div class="app-shell">
 
-        <!-- Sidebar Navigation -->
         <aside class="sidebar">
 
             <div class="brand">
+
                 <div class="brand-mark">N</div>
 
                 <div class="brand-text">
                     <span class="brand-name">Nexora</span>
                     <span class="brand-tagline">Learn. Plan. Grow.</span>
                 </div>
+
             </div>
 
-            <nav class="main-nav" aria-label="Main navigation">
+
+            <nav class="main-nav">
 
                 <p class="nav-label">Workspace</p>
 
                 <a href="#" class="nav-item active">
                     <span class="nav-icon">⌂</span>
-                    <span>Dashboard</span>
+                    Dashboard
                 </a>
 
                 <a href="#" class="nav-item">
                     <span class="nav-icon">✓</span>
-                    <span>Tasks</span>
+                    Tasks
                 </a>
 
                 <a href="#" class="nav-item">
                     <span class="nav-icon">✦</span>
-                    <span>Discover</span>
+                    Discover
                 </a>
 
                 <p class="nav-label">Personal</p>
 
                 <a href="#" class="nav-item">
                     <span class="nav-icon">◌</span>
-                    <span>Progress</span>
+                    Progress
                 </a>
 
                 <a href="#" class="nav-item">
                     <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
+                    Settings
                 </a>
 
             </nav>
+
 
             <div class="sidebar-bottom">
 
@@ -81,7 +471,9 @@
                     </div>
                 </div>
 
+
                 <div class="profile-mini">
+
                     <div class="avatar">A</div>
 
                     <div class="profile-info">
@@ -89,12 +481,8 @@
                         <span>My workspace</span>
                     </div>
 
-                    <button
-                        class="profile-more"
-                        aria-label="Profile options"
-                    >
-                        •••
-                    </button>
+                    <button class="profile-more">•••</button>
+
                 </div>
 
             </div>
@@ -102,10 +490,8 @@
         </aside>
 
 
-        <!-- Main Application Area -->
         <main id="app-root">
 
-            <!-- Top Header -->
             <header class="topbar">
 
                 <div class="mobile-brand">
@@ -119,16 +505,12 @@
                         id="theme-toggle"
                         class="icon-button"
                         aria-label="Toggle theme"
-                        title="Toggle theme"
                     >
                         <span id="theme-icon">☾</span>
                     </button>
 
-                    <button
-                        class="notification-button"
-                        aria-label="Notifications"
-                    >
-                        <span>♧</span>
+                    <button class="notification-button">
+                        ♧
                         <span class="notification-dot"></span>
                     </button>
 
@@ -139,13 +521,12 @@
             </header>
 
 
-            <!-- Dashboard Content -->
             <section class="dashboard-content">
 
-                <!-- Welcome -->
                 <div class="welcome-section">
 
                     <div>
+
                         <p class="eyebrow">YOUR WORKSPACE</p>
 
                         <h1>
@@ -157,24 +538,28 @@
                             Organize your day, keep learning, and make
                             meaningful progress.
                         </p>
+
                     </div>
 
+
                     <div class="date-card">
+
                         <span class="date-icon">◷</span>
 
                         <div>
                             <span class="date-label">Today</span>
                             <strong>Stay consistent</strong>
                         </div>
+
                     </div>
 
                 </div>
 
 
-                <!-- Statistics Grid -->
                 <div class="stats-grid">
 
                     <article class="stat-card">
+
                         <div class="stat-top">
                             <span class="stat-icon purple">✓</span>
                             <span class="stat-trend">+12%</span>
@@ -184,14 +569,16 @@
                         <h2>18</h2>
 
                         <div class="progress-line">
-                            <span style="width: 72%"></span>
+                            <span style="width:72%"></span>
                         </div>
 
                         <small>72% of your weekly goal</small>
+
                     </article>
 
 
                     <article class="stat-card">
+
                         <div class="stat-top">
                             <span class="stat-icon blue">◷</span>
                             <span class="stat-trend">+2.4h</span>
@@ -201,14 +588,16 @@
                         <h2>14.5h</h2>
 
                         <div class="progress-line">
-                            <span style="width: 61%"></span>
+                            <span style="width:61%"></span>
                         </div>
 
                         <small>61% of your weekly target</small>
+
                     </article>
 
 
                     <article class="stat-card">
+
                         <div class="stat-top">
                             <span class="stat-icon gold">✦</span>
                             <span class="stat-trend">Active</span>
@@ -228,18 +617,18 @@
                         </div>
 
                         <small>Keep your momentum going</small>
+
                     </article>
 
                 </div>
 
 
-                <!-- Main Dashboard Grid -->
                 <div class="dashboard-grid">
 
-                    <!-- Today's Focus -->
                     <section class="panel focus-panel">
 
                         <div class="panel-header">
+
                             <div>
                                 <p class="eyebrow">TODAY</p>
                                 <h2>Today's focus</h2>
@@ -248,12 +637,14 @@
                             <button class="text-button">
                                 View all →
                             </button>
+
                         </div>
 
 
                         <div class="task-list">
 
                             <div class="task-item">
+
                                 <div class="task-check">✓</div>
 
                                 <div class="task-content">
@@ -264,10 +655,12 @@
                                 <span class="task-status completed">
                                     Done
                                 </span>
+
                             </div>
 
 
                             <div class="task-item">
+
                                 <div class="task-check empty"></div>
 
                                 <div class="task-content">
@@ -278,10 +671,12 @@
                                 <span class="task-status">
                                     Next
                                 </span>
+
                             </div>
 
 
                             <div class="task-item">
+
                                 <div class="task-check empty"></div>
 
                                 <div class="task-content">
@@ -292,6 +687,7 @@
                                 <span class="task-status">
                                     Later
                                 </span>
+
                             </div>
 
                         </div>
@@ -299,24 +695,27 @@
                     </section>
 
 
-                    <!-- Weekly Progress -->
                     <section class="panel progress-panel">
 
                         <div class="panel-header">
+
                             <div>
                                 <p class="eyebrow">OVERVIEW</p>
                                 <h2>Weekly progress</h2>
                             </div>
 
                             <span class="percentage">68%</span>
+
                         </div>
 
 
                         <div class="progress-ring">
+
                             <div class="ring-inner">
                                 <strong>68%</strong>
                                 <span>completed</span>
                             </div>
+
                         </div>
 
 
@@ -341,12 +740,102 @@
                 </div>
 
 
-                <!-- Bottom Section -->
+                <!-- =========================================
+                     DAY 47 — COMPONENT LIBRARY
+                     ========================================= -->
+
+                <section class="component-showcase">
+
+                    <div class="showcase-heading">
+
+                        <div>
+
+                            <p class="eyebrow">COMPONENT LIBRARY</p>
+
+                            <h2>Built to be reusable.</h2>
+
+                            <p>
+                                Native Web Components with Shadow DOM,
+                                reusable templates, and encapsulated styles.
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="open-modal"
+                            class="primary-button"
+                        >
+                            Open modal
+                        </button>
+
+                    </div>
+
+
+                    <div class="component-grid">
+
+                        <div class="component-card">
+
+                            <div class="component-card-heading">
+
+                                <span class="component-badge">
+                                    &lt;user-card&gt;
+                                </span>
+
+                                <span>Shadow DOM</span>
+
+                            </div>
+
+                            <user-card
+                                name="Nexora Student"
+                                role="Computer Science Learner"
+                                initials="NS"
+                                progress="76"
+                            ></user-card>
+
+                        </div>
+
+
+                        <div class="component-card">
+
+                            <div class="component-card-heading">
+
+                                <span class="component-badge">
+                                    &lt;data-feed&gt;
+                                </span>
+
+                                <span>Template API</span>
+
+                            </div>
+
+                            <data-feed></data-feed>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <custom-modal id="welcome-modal">
+
+                    <h2 slot="title">
+                        Welcome to Nexora ✦
+                    </h2>
+
+                    <p>
+                        This reusable modal is built using a native
+                        Web Component, Shadow DOM, HTML templates, and slots.
+                    </p>
+
+                </custom-modal>
+
+
                 <section class="panel inspiration-panel">
 
                     <div class="inspiration-icon">✦</div>
 
                     <div class="inspiration-content">
+
                         <p class="eyebrow">A LITTLE REMINDER</p>
 
                         <h2>
@@ -357,6 +846,7 @@
                             Focus on showing up, learning something new,
                             and taking one meaningful step forward today.
                         </p>
+
                     </div>
 
                     <button class="primary-button">
@@ -373,6 +863,10 @@
 
 
     <script src="main.js"></script>
+
+    <script type="module" src="./components/user-card.js"></script>
+    <script type="module" src="./components/data-feed.js"></script>
+    <script type="module" src="./components/custom-modal.js"></script>
 
 </body>
 </html>
