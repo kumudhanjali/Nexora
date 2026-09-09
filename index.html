@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Nexora — a modern student productivity and learning workspace."
+    >
+
+    <meta name="theme-color" content="#7c5cff">
+
+    <title>Nexora — Your Space to Grow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Application Shell -->
+    <div class="app-shell">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-mark">N</div>
+
+                <div class="brand-text">
+                    <span class="brand-name">Nexora</span>
+                    <span class="brand-tagline">Learn. Plan. Grow.</span>
+                </div>
+            </div>
+
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <p class="nav-label">Workspace</p>
+
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tasks</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">✦</span>
+                    <span>Discover</span>
+                </a>
+
+                <p class="nav-label">Personal</p>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">◌</span>
+                    <span>Progress</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="focus-card">
+                    <div class="focus-icon">✦</div>
+
+                    <div>
+                        <strong>Stay focused</strong>
+                        <p>Small steps create big progress.</p>
+                    </div>
+                </div>
+
+                <div class="profile-mini">
+                    <div class="avatar">A</div>
+
+                    <div class="profile-info">
+                        <strong>Student</strong>
+                        <span>My workspace</span>
+                    </div>
+
+                    <button
+                        class="profile-more"
+                        aria-label="Profile options"
+                    >
+                        •••
+                    </button>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Application Area -->
+        <main id="app-root">
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    <div class="brand-mark">N</div>
+                    <span>Nexora</span>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        id="theme-toggle"
+                        class="icon-button"
+                        aria-label="Toggle theme"
+                        title="Toggle theme"
+                    >
+                        <span id="theme-icon">☾</span>
+                    </button>
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        <span>♧</span>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="top-avatar">A</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <section class="dashboard-content">
+
+                <!-- Welcome -->
+                <div class="welcome-section">
+
+                    <div>
+                        <p class="eyebrow">YOUR WORKSPACE</p>
+
+                        <h1>
+                            Good evening,
+                            <span>there.</span>
+                        </h1>
+
+                        <p class="welcome-text">
+                            Organize your day, keep learning, and make
+                            meaningful progress.
+                        </p>
+                    </div>
+
+                    <div class="date-card">
+                        <span class="date-icon">◷</span>
+
+                        <div>
+                            <span class="date-label">Today</span>
+                            <strong>Stay consistent</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Statistics Grid -->
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon purple">✓</span>
+                            <span class="stat-trend">+12%</span>
+                        </div>
+
+                        <p>Tasks completed</p>
+                        <h2>18</h2>
+
+                        <div class="progress-line">
+                            <span style="width: 72%"></span>
+                        </div>
+
+                        <small>72% of your weekly goal</small>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon blue">◷</span>
+                            <span class="stat-trend">+2.4h</span>
+                        </div>
+
+                        <p>Focus time</p>
+                        <h2>14.5h</h2>
+
+                        <div class="progress-line">
+                            <span style="width: 61%"></span>
+                        </div>
+
+                        <small>61% of your weekly target</small>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon gold">✦</span>
+                            <span class="stat-trend">Active</span>
+                        </div>
+
+                        <p>Learning streak</p>
+                        <h2>7 days</h2>
+
+                        <div class="streak-dots">
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                            <span class="filled"></span>
+                        </div>
+
+                        <small>Keep your momentum going</small>
+                    </article>
+
+                </div>
+
+
+                <!-- Main Dashboard Grid -->
+                <div class="dashboard-grid">
+
+                    <!-- Today's Focus -->
+                    <section class="panel focus-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">TODAY</p>
+                                <h2>Today's focus</h2>
+                            </div>
+
+                            <button class="text-button">
+                                View all →
+                            </button>
+                        </div>
+
+
+                        <div class="task-list">
+
+                            <div class="task-item">
+                                <div class="task-check">✓</div>
+
+                                <div class="task-content">
+                                    <strong>Review JavaScript concepts</strong>
+                                    <span>Learning · 45 min</span>
+                                </div>
+
+                                <span class="task-status completed">
+                                    Done
+                                </span>
+                            </div>
+
+
+                            <div class="task-item">
+                                <div class="task-check empty"></div>
+
+                                <div class="task-content">
+                                    <strong>Complete project documentation</strong>
+                                    <span>Project · 60 min</span>
+                                </div>
+
+                                <span class="task-status">
+                                    Next
+                                </span>
+                            </div>
+
+
+                            <div class="task-item">
+                                <div class="task-check empty"></div>
+
+                                <div class="task-content">
+                                    <strong>Practice problem solving</strong>
+                                    <span>Practice · 30 min</span>
+                                </div>
+
+                                <span class="task-status">
+                                    Later
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- Weekly Progress -->
+                    <section class="panel progress-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">OVERVIEW</p>
+                                <h2>Weekly progress</h2>
+                            </div>
+
+                            <span class="percentage">68%</span>
+                        </div>
+
+
+                        <div class="progress-ring">
+                            <div class="ring-inner">
+                                <strong>68%</strong>
+                                <span>completed</span>
+                            </div>
+                        </div>
+
+
+                        <div class="legend">
+
+                            <div>
+                                <span class="legend-dot purple"></span>
+                                <span>Completed</span>
+                                <strong>34</strong>
+                            </div>
+
+                            <div>
+                                <span class="legend-dot muted"></span>
+                                <span>Remaining</span>
+                                <strong>16</strong>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- Bottom Section -->
+                <section class="panel inspiration-panel">
+
+                    <div class="inspiration-icon">✦</div>
+
+                    <div class="inspiration-content">
+                        <p class="eyebrow">A LITTLE REMINDER</p>
+
+                        <h2>
+                            Progress doesn't have to be perfect.
+                        </h2>
+
+                        <p>
+                            Focus on showing up, learning something new,
+                            and taking one meaningful step forward today.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        Start focusing →
+                    </button>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="main.js"></script>
+
+</body>
+</html>
